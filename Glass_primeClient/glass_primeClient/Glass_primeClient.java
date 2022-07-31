@@ -23,9 +23,10 @@ import javafx.stage.Stage;
 
 public class Glass_primeClient extends Application {
 
-	DataOutputStream toServer = null;
-	DataInputStream fromServer = null;
-	Socket socket = null;
+	private static final int PORT = 8000;
+	private DataOutputStream toServer = null;
+	private DataInputStream fromServer = null;
+	private Socket socket = null;
 
 
 	@Override
@@ -82,7 +83,7 @@ public class Glass_primeClient extends Application {
 		});
 
 		try {
-			socket = new Socket("localhost", 8000);
+			socket = new Socket("localhost", PORT);
 			
 			// open input from server
 			fromServer = new DataInputStream(socket.getInputStream());
