@@ -81,10 +81,10 @@ public class Glass_primeClient extends Application {
 		try {
 			socket = new Socket("localhost", 8000);
 			
-			// open input to server
+			// open input from server
 			fromServer = new DataInputStream(socket.getInputStream());
 
-			// open output from server
+			// open output to server
 			toServer = new DataOutputStream(socket.getOutputStream());
 		}
 		catch (IOException ex) {
