@@ -64,10 +64,10 @@ public class Glass_primeClient extends Application {
 		input.setOnAction(e -> {
 			try {
 				// get user's input from text field
-				int intInput = Integer.parseInt(input.getText().trim());
+				long intInput = Long.parseLong(input.getText().trim());
 
 				// send the user's input to server
-				toServer.writeInt(intInput);
+				toServer.writeLong(intInput);
 				toServer.flush();
 
 				// get response from the server
