@@ -67,7 +67,7 @@ public class Glass_primeClient extends Application {
 				int intInput = Integer.parseInt(input.getText().trim());
 
 				// send the user's input to server
-				toServer.writeDouble(intInput);
+				toServer.writeInt(intInput);
 				toServer.flush();
 
 				// get response from the server
