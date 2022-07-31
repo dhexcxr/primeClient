@@ -22,6 +22,8 @@ public class Glass_primeClient extends Application {
 
 	DataOutputStream toServer = null;
 	DataInputStream fromServer = null;
+	Socket socket = null;
+
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -47,6 +49,14 @@ public class Glass_primeClient extends Application {
 		primaryStage.setTitle("Prime Client"); // set window title title
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+		primaryStage.setOnCloseRequest(x -> {
+			try {
+				socket.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		});
 
 		input.setOnAction(e -> {
 			try {
@@ -68,8 +78,9 @@ public class Glass_primeClient extends Application {
 			}
 		});
 
-		try (Socket socket = new Socket("localhost", 8000)) {
-
+		try {
+			socket = new Socket("localhost", 8000);
+			
 			// open input to server
 			fromServer = new DataInputStream(socket.getInputStream());
 
